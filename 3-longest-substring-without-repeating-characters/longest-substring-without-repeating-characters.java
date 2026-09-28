@@ -4,20 +4,21 @@ class Solution {
         int currlen=0;
         int i=0;
         int j=-1;
-        boolean[] set = new boolean[256];
+        boolean a[]= new boolean[256];
         while(i<s.length()) {
             char ch_to_aquire = s.charAt(i);
-            while(set[ch_to_aquire]==true) {
+            while(a[s.charAt(i)]==true) {
                 j++;
-              char ch_to_release = s.charAt(j);
-                set[ch_to_release]=false;
+                char ch_to_remove = s.charAt(j);
+                a[ch_to_remove] = false;
+                currlen--;
             }
-            set[ch_to_aquire]=true;
-            currlen=i-j;
-            if(currlen>maxlen) {
+            a[ch_to_aquire]=true;
+            currlen++;
+            i++;
+            if(currlen>=maxlen) {
                 maxlen=currlen;
             }
-            i++;
         }
         return maxlen;
     }
